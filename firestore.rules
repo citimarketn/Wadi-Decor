@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // الكتالوج والإعدادات: قراءة للجميع، كتابة للمسؤولين فقط
+    match /products/{id}   { allow read: if true; allow write: if isAdmin(); }
+    match /categories/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /settings/{id}   { allow read: if true; allow write: if isAdmin(); }
+
+    // سلة كل مستخدم: له وحده
+    match /users/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // المسؤولون: يُضافون يدويًا من لوحة Firebase فقط (uid المستخدم كمعرّف للمستند)
+    match /admins/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // الطلبات
+    match /orders/{id} {
+      // الإنشاء ممنوع من المتصفح تمامًا: الطلبات تُنشأ فقط من خادم Flask بعد إعادة حساب الأسعار
+      allow create: if false;
+      allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow update: if isAdmin();
+      allow delete: if false;
+    }
+  }
+}

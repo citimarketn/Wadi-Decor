@@ -1,0 +1,6 @@
+# لا ترفع أبدًا مفتاح الخادم (Service Account) ولا أي أسرار
+*.json
+.env
+__pycache__/
+*.pyc
+.DS_Store
