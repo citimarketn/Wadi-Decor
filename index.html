@@ -12,10 +12,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--teal:#0E4A47;--teal2:#0A3836;--brass:#B98A34;--bone:#F5F6F3;--stone:#E3E8E4;--sage:#CFDBD5;--ink:#172321;--mute:#55655F;--sale:#B4372B;--ok:#2B7A4B;--line:#D5DDD8}
+:root{--teal:#0E4A47;--teal2:#0A3836;--brass:#C79A4B;--bone:#F5F6F3;--stone:#E3E8E4;--sage:#CFDBD5;--ink:#172321;--mute:#55655F;--sale:#B8503A;--ok:#2B7A4B;--line:#D5DDD8;--surface:#ffffff;--surface2:#eef4f1;--site-bg-img:none}
+:root[data-theme="dark"]{--teal:#4FB3A3;--teal2:#0A3836;--brass:#DDB05C;--bone:#101917;--stone:#182422;--sage:#22322d;--ink:#EAF1EE;--mute:#9FB2AC;--sale:#FF8A73;--ok:#5FCB93;--line:#2B3A36;--surface:#182422;--surface2:#16302b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--teal:#4FB3A3;--teal2:#0A3836;--brass:#DDB05C;--bone:#101917;--stone:#182422;--sage:#22322d;--ink:#EAF1EE;--mute:#9FB2AC;--sale:#FF8A73;--ok:#5FCB93;--line:#2B3A36;--surface:#182422;--surface2:#16302b}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;font:400 16px/1.75 'Tajawal','Segoe UI',Tahoma,sans-serif;color:var(--ink);background:var(--bone);min-height:100vh;display:flex;flex-direction:column}
+body{margin:0;font:400 16px/1.75 'Tajawal','Segoe UI',Tahoma,sans-serif;color:var(--ink);background-color:var(--bone);background-image:linear-gradient(rgba(245,246,243,.93),rgba(245,246,243,.93)),var(--site-bg-img);background-size:cover;background-attachment:fixed;background-position:center;min-height:100vh;display:flex;flex-direction:column;transition:background-color .2s,color .2s}
+:root[data-theme="dark"] body{background-image:linear-gradient(rgba(16,25,23,.92),rgba(16,25,23,.92)),var(--site-bg-img)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body{background-image:linear-gradient(rgba(16,25,23,.92),rgba(16,25,23,.92)),var(--site-bg-img)}}
 main{flex:1}
 h1,h2,h3,.brandname{font-family:'Reem Kufi','Tajawal',sans-serif;line-height:1.35;margin:0;font-weight:700}
 a{color:inherit;text-decoration:none}
@@ -37,7 +41,7 @@ img,svg{display:block;max-width:100%}
 .ico{width:20px;height:20px;flex:none}
 .notice{background:var(--teal2);color:#dfeae6;font-size:14px}
 .notice .wrap{display:flex;gap:8px;align-items:center;justify-content:center;padding:6px 0;text-align:center}
-header.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+header.top{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
 .bar{display:flex;align-items:center;gap:16px;padding:10px 0}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
 .brand svg{width:46px;height:46px}
@@ -47,15 +51,15 @@ header.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;t
 .search input{flex:1;min-width:0;height:44px;border:1.5px solid var(--line);border-inline-end:0;border-radius:0 10px 10px 0;padding:0 14px;background:var(--bone)}
 .search button{width:48px;border:0;background:var(--teal);color:#fff;border-radius:10px 0 0 10px;cursor:pointer;display:grid;place-items:center}
 .tools{display:flex;gap:8px;align-items:center;margin-inline-start:auto;position:relative}
-.tbtn{position:relative;display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;font-weight:700}
+.tbtn{position:relative;display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);cursor:pointer;font-weight:700}
 .tbtn:hover{border-color:var(--teal)}
 .badge{position:absolute;top:-7px;inset-inline-start:-7px;min-width:20px;height:20px;border-radius:10px;background:var(--brass);color:#1b1407;font-size:12px;display:grid;place-items:center;padding:0 5px;font-weight:700}
-.menu{position:absolute;top:calc(100% + 8px);inset-inline-end:0;width:250px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(10,56,54,.16);padding:6px;z-index:40}
+.menu{position:absolute;top:calc(100% + 8px);inset-inline-end:0;width:250px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(10,56,54,.16);padding:6px;z-index:40}
 .menu a,.menu button{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;background:none;border-radius:8px;text-align:start;cursor:pointer}
 .menu a:hover,.menu button:hover{background:var(--stone)}
 .menu hr{border:0;border-top:1px solid var(--line);margin:6px 0}
 .menu .who{padding:8px 12px;font-size:14px;color:var(--mute)}
-.catbar{border-top:1px solid var(--line);background:#fff}
+.catbar{border-top:1px solid var(--line);background:var(--surface)}
 .catbar .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin}
 .catbar a{flex:none;padding:9px 14px;font-size:15px;font-weight:500;color:var(--mute);border-bottom:3px solid transparent}
 .catbar a:hover,.catbar a.on{color:var(--teal);border-color:var(--brass)}
@@ -70,7 +74,7 @@ header.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;t
 .promo{position:absolute;inset-block-start:26%;inset-inline-start:-4px;z-index:2;width:104px;height:104px;border-radius:50%;background:var(--brass);color:#1b1407;display:grid;place-items:center;text-align:center;font:700 15px/1.25 'Reem Kufi',sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-8deg)}
 .promo b{display:block;font-size:30px;line-height:1}
 .archwrap{position:relative;justify-self:center;width:min(100%,400px)}
-.trust{background:#fff;border-bottom:1px solid var(--line)}
+.trust{background:var(--surface);border-bottom:1px solid var(--line)}
 .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .trust div{display:flex;gap:12px;align-items:center;padding:16px 8px}
 .trust svg{color:var(--brass);width:28px;height:28px}
@@ -80,12 +84,12 @@ section.blk{padding:44px 0}
 .sh h2{font-size:28px;color:var(--teal)}
 .sh a{color:var(--teal);font-weight:700}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
-.tile{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:center;transition:border-color .15s}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:center;transition:border-color .15s}
 .tile:hover{border-color:var(--teal)}
 .tile img{aspect-ratio:4/3;object-fit:cover;width:100%}
 .tile span{display:block;padding:10px 8px;font-weight:700;font-size:15px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative}
 .card .im{position:relative;display:block}
 .card .im img{aspect-ratio:4/3;object-fit:cover;width:100%}
 .sale{position:absolute;top:10px;inset-inline-start:10px;background:var(--sale);color:#fff;border-radius:8px;padding:2px 10px;font-weight:700;font-size:14px}
@@ -96,9 +100,9 @@ section.blk{padding:44px 0}
 .price b{font-size:19px;color:var(--teal)}
 .price s{color:var(--mute);font-size:14px}
 .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
-.chip{padding:6px 14px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-weight:500;font-size:15px;cursor:pointer}
+.chip{padding:6px 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);font-weight:500;font-size:15px;cursor:pointer}
 .chip.on{background:var(--teal);color:#fff;border-color:var(--teal)}
-select,input[type=text],input[type=email],input[type=tel],input[type=password],input[type=number],textarea{width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:#fff}
+select,input[type=text],input[type=email],input[type=tel],input[type=password],input[type=number],textarea{width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--surface);color:var(--ink)}
 textarea{min-height:110px;resize:vertical;line-height:1.7}
 select{width:auto}
 label.f{display:block;margin-bottom:14px;font-weight:700;font-size:15px}
@@ -106,16 +110,16 @@ label.f>span{display:block;margin-bottom:4px}
 label.f small{font-weight:400;color:var(--mute)}
 .err{color:var(--sale);font-size:14px;min-height:22px;margin:0 0 8px}
 .pd{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:32px 0}
-.pd .pic{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.pd .pic{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
 .pd .pic img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .pd h1{font-size:32px;color:var(--teal)}
 .pd .price b{font-size:30px}
-.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;background:var(--surface)}
 .qty button{width:40px;height:42px;border:0;background:none;font-size:20px;cursor:pointer}
 .qty span{min-width:34px;text-align:center;font-weight:700}
 .crumbs{font-size:14px;color:var(--mute);padding-top:20px}
 .crumbs a{color:var(--teal)}
-.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
 .two{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;padding:28px 0;align-items:start}
 .line{display:grid;grid-template-columns:84px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
 .line:last-child{border:0}
@@ -126,11 +130,18 @@ label.f small{font-weight:400;color:var(--mute)}
 .sum.t{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;font-size:19px;font-weight:700;color:var(--teal)}
 .empty{text-align:center;padding:56px 16px;color:var(--mute)}
 .empty svg{margin:0 auto 12px;color:var(--brass);width:48px;height:48px}
+.arch img{width:100%;height:100%;object-fit:cover;display:block}
+.pgbanner{background:linear-gradient(rgba(14,74,71,.74),rgba(10,56,54,.74)),var(--pgimg) center/cover;background-size:cover;color:#fff;padding:32px 0}
+.pgbanner h1{font-size:27px;color:#fff}
+.pgbanner p{margin:6px 0 0;color:#dfeae6;font-size:15px}
+.home-lnk{display:flex!important;align-items:center;padding:0 12px!important}
+.credit{display:flex;align-items:center;gap:4px;font:500 11px 'Tajawal',sans-serif;color:var(--mute);opacity:.8;margin-top:1px}
+.credit img{height:14px;width:auto;display:block}
 .pay{display:grid;gap:10px;margin-bottom:14px}
-.pay label{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:10px;padding:12px;cursor:pointer;background:#fff}
+.pay label{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:10px;padding:12px;cursor:pointer;background:var(--surface)}
 .pay input{margin-top:6px;accent-color:var(--teal)}
-.pay label:has(input:checked){border-color:var(--teal);background:#eef4f1}
-.hint{background:#eef4f1;border:1px dashed var(--teal);border-radius:10px;padding:12px;font-size:15px;margin-bottom:14px}
+.pay label:has(input:checked){border-color:var(--teal);background:var(--surface2)}
+.hint{background:var(--surface2);border:1px dashed var(--teal);border-radius:10px;padding:12px;font-size:15px;margin-bottom:14px}
 .status{display:inline-block;padding:2px 12px;border-radius:999px;font-size:14px;font-weight:700;background:var(--sage);color:var(--teal)}
 .status.delivered{background:#d8eee1;color:var(--ok)}.status.cancelled{background:#f5d9d5;color:var(--sale)}
 .tl{list-style:none;display:flex;padding:0;margin:14px 0 4px;gap:0}
@@ -138,7 +149,7 @@ label.f small{font-weight:400;color:var(--mute)}
 .tl li::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--line);border-radius:3px;margin-inline:2px}
 .tl li.on{color:var(--teal);font-weight:700}
 .tl li.on::before{background:var(--teal)}
-.order{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px;background:#fff}
+.order{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px;background:var(--surface)}
 .order header{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px}
 .legal{max-width:780px;padding:36px 0 56px}
 .legal h1{font-size:34px;color:var(--teal);margin-bottom:18px}
@@ -154,24 +165,24 @@ footer.ft{background:var(--teal2);color:#c9dbd6;margin-top:40px}
 .soc button{border:0;background:none;padding:0;cursor:pointer;width:40px;height:40px;border-radius:50%}
 .soc svg{width:40px;height:40px}
 .overlay{position:fixed;inset:0;background:rgba(10,30,28,.55);z-index:60;display:grid;place-items:center;padding:16px;overflow:auto}
-.modal{background:#fff;border-radius:16px;width:min(460px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:24px;position:relative}
+.modal{background:var(--surface);border-radius:16px;width:min(460px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:24px;position:relative}
 .modal.wide{width:min(640px,100%)}
 .modal h2{font-size:24px;color:var(--teal);margin-bottom:6px}
 .x{position:absolute;top:12px;inset-inline-start:12px;width:36px;height:36px;border:0;background:var(--stone);border-radius:50%;cursor:pointer;font-size:20px;line-height:1}
 .tabs{display:flex;gap:6px;margin:14px 0}
-.tabs button{flex:1;height:42px;border:1.5px solid var(--line);background:#fff;border-radius:10px;font-weight:700;cursor:pointer}
+.tabs button{flex:1;height:42px;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;font-weight:700;cursor:pointer}
 .tabs button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
-.shield{display:flex;gap:10px;align-items:center;background:#eef4f1;border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:14px;color:var(--teal2)}
+.shield{display:flex;gap:10px;align-items:center;background:var(--surface2);border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:14px;color:var(--teal2)}
 .shield svg{color:var(--ok);flex:none}
 .or{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:14px;margin:14px 0}
 .or::before,.or::after{content:"";flex:1;border-top:1px solid var(--line)}
-.soc-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:46px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-weight:700;cursor:pointer;margin-bottom:8px}
+.soc-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:46px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);font-weight:700;cursor:pointer;margin-bottom:8px}
 .soc-btn:hover{background:var(--bone)}
 .soc-btn svg{width:22px;height:22px}
 .link{background:none;border:0;color:var(--teal);text-decoration:underline;cursor:pointer;padding:0;font-weight:500}
 .toast{position:fixed;bottom:20px;inset-inline:16px;margin-inline:auto;width:fit-content;max-width:calc(100% - 32px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:10px;z-index:90;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .adm-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:20px 0}
-.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+.tbl{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
 .tbl th,.tbl td{padding:8px 10px;text-align:start;border-bottom:1px solid var(--line);vertical-align:middle}
 .tbl th{background:var(--stone);font-size:14px}
 .tbl img.th{width:56px;height:42px;object-fit:cover;border-radius:6px}
@@ -237,6 +248,16 @@ const store={
 const uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const mix=(a,b,t)=>{const p=x=>[1,3,5].map(i=>parseInt(x.slice(i,i+2),16));const A=p(a),B=p(b);return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,'0')).join('')};
 const safeImg=u=>/^(data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+|https:\/\/[^\s"'<>]+)$/.test(u||'');
+const safePath=v=>{v=String(v||'').trim();return /^[A-Za-z0-9_\-.\/:]+$/.test(v)?v:''};
+function applyBrand(){
+  const s=S.settings,root=document.documentElement.style;
+  root.setProperty('--teal',/^#[0-9a-fA-F]{6}$/.test(s.colorPrimary||'')?s.colorPrimary:'#0E4A47');
+  root.setProperty('--brass',/^#[0-9a-fA-F]{6}$/.test(s.colorAccent||'')?s.colorAccent:'#C79A4B');
+  const bg=safePath(s.siteBg)||'images/hero-background.jpg';
+  root.setProperty('--site-bg-img',"url('"+bg+"')");
+}
+function curTheme(){return document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function applyTheme(){const t=store.get('wd_theme',null);if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.removeAttribute('data-theme')}
 
 /* ===== أيقونات ===== */
 const IC={
@@ -248,7 +269,10 @@ const IC={
   back:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
   chat:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.5-4.6A8 8 0 1 1 21 12z"/></svg>',
   chev:'<svg class="ico" style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>',
-  wa:'<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>'
+  wa:'<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>',
+  home:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>',
+  sun:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>',
+  moon:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>'
 };
 const FB_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.4 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.6V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.4H7.7V14h2.7v8z"/></svg>';
 const IG_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="igg" cx="30%" cy="107%" r="140%"><stop offset="0" stop-color="#FED576"/><stop offset=".26" stop-color="#F47133"/><stop offset=".61" stop-color="#BC3081"/><stop offset="1" stop-color="#4C63D2"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igg)"/><rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.4" cy="7.6" r="1" fill="#fff"/></svg>';
@@ -300,7 +324,7 @@ const imgOf=p=>safeImg(p.img)?p.img:artUri(p.type,p.color);
 /* ===== البيانات الافتراضية (أسعار أمثلة قابلة للتعديل من لوحة التحكم) ===== */
 const P=(id,cat,name,price,old,type,color,desc)=>({id,cat,name,price,old,type,color,desc,stock:10,img:''});
 const DEF={
-  settings:{name:'وادي الديكور والمفروشات',tagline:'ديكور ومفروشات لكل ركن في بيتك',address:'مصر – السويس – الأربعين – شارع الجيش',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0},
+  settings:{name:'وادي الديكور والمفروشات',tagline:'ديكور ومفروشات لكل ركن في بيتك',address:'مصر – السويس – الأربعين – شارع الجيش',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,heroImg:'',heroTitle:'',heroSubtitle:'',siteBg:'',shopBg:'',cartBg:'',designLogo:'',designCredit:'',colorPrimary:'#0E4A47',colorAccent:'#C79A4B'},
   cats:[['c1','كنب وركنات'],['c2','غرف النوم'],['c3','الستائر'],['c4','السجاد'],['c5','الإضاءة'],['c6','المفروشات ومفارش السرير'],['c7','ديكور الحائط والمرايا'],['c8','الطاولات ووحدات التلفزيون'],['c9','التحف والإكسسوارات']].map(([id,name],i)=>({id,name,ord:i})),
   products:[
     P('p1','c1','كنبة ثلاثية مقاعد – قطيفة',18500,22000,'sofa','#0E4A47','كنبة ثلاثية المقاعد بتصميم عصري وجلسة مريحة، مناسبة لغرف المعيشة والاستقبال.'),
@@ -590,6 +614,9 @@ function card(p){
   const d=disc(p);
   return `<article class="card"><a class="im" href="#/p/${esc(p.id)}" aria-label="${esc(p.name)}"><img src="${imgOf(p)}" alt="${esc(p.name)}" loading="lazy">${d?`<span class="sale">-${d}%</span>`:''}</a><div class="in"><span class="cat-l">${esc(catName(p.cat))}</span><h3><a href="#/p/${esc(p.id)}">${esc(p.name)}</a></h3><div class="price"><b>${egp(p.price)}</b>${p.old>p.price?`<s>${egp(p.old)}</s>`:''}</div><button class="btn btn-teal btn-sm" data-act="add" data-id="${esc(p.id)}" ${p.stock===0?'disabled':''}>${p.stock===0?'غير متوفر':'أضف إلى السلة'}</button></div></article>`;
 }
+function pageBanner(img,title,subtitle){
+  return `<div class="pgbanner" style="--pgimg:url('${esc(safePath(img))}')"><div class="wrap"><h1>${esc(title)}</h1>${subtitle?`<p>${esc(subtitle)}</p>`:''}</div></div>`;
+}
 
 /* ===== الهيدر والفوتر ===== */
 function renderHeader(){
@@ -598,20 +625,20 @@ function renderHeader(){
   $('#hdr').innerHTML=`
   <div class="notice"><div class="wrap">${IC.shield}<span>بياناتك محمية – اتصال مشفر، ولا نشارك بياناتك مع أي طرف</span></div></div>
   <header class="top"><div class="wrap bar">
-    <a class="brand" href="#/" aria-label="${esc(s.name)} – الرئيسية">${LOGO}<span><span class="brandname">${esc(s.name)}</span></span></a>
+    <a class="brand" href="#/" aria-label="${esc(s.name)} – الرئيسية">${LOGO}<span><span class="brandname">${esc(s.name)}</span><span class="credit"><img src="${esc(s.designLogo||'images/logo.png')}" alt="" onerror="this.style.display='none'">${esc(s.designCredit||'تصميم وادي المدينة')}</span></span></a>
     <form class="search" data-form="search" role="search"><input type="text" name="q" placeholder="ابحث عن كنب، ستائر، سجاد…" aria-label="بحث" autocomplete="off"><button type="submit" aria-label="بحث">${IC.search}</button></form>
     <div class="tools">
+      <button class="tbtn" data-act="theme" aria-label="${curTheme()==='dark'?'تفعيل الوضع النهاري':'تفعيل الوضع الليلي'}">${curTheme()==='dark'?IC.sun:IC.moon}</button>
       <button class="tbtn" data-act="menu" aria-haspopup="true" aria-expanded="${S.menu}">${IC.user}<span class="lbl">${S.user?esc(S.user.name.split(' ')[0]):'حسابي'}</span>${IC.chev}</button>
       <a class="tbtn" href="#/cart" aria-label="السلة">${IC.cart}<span class="lbl">السلة</span>${n?`<span class="badge">${nf.format(n)}</span>`:''}</a>
       ${S.menu?`<nav class="menu" aria-label="قائمة الحساب">
-        ${S.user?`<div class="who">${esc(S.user.name)}</div><a href="#/account">حسابي وطلباتي</a>`:`<button data-act="login">تسجيل الدخول</button><button data-act="signup">إنشاء حساب جديد</button>`}
-        <hr><a href="#/page/support">خدمة العملاء</a><a href="#/page/about">من نحن</a><a href="#/page/returns">سياسة الاسترجاع</a><a href="#/page/privacy">سياسة الخصوصية</a><a href="#/page/terms">شروط الاستخدام</a>
+        ${S.user?`<div class="who">${esc(S.user.name)}</div><a href="#/account">حسابي وتتبع الطلبات</a>`:`<button data-act="login">تسجيل الدخول</button><button data-act="signup">إنشاء حساب جديد</button>`}
         ${S.isAdmin?`<hr><a href="#/admin">لوحة التحكم</a>`:''}
         ${S.user?`<hr><button data-act="logout">تسجيل الخروج</button>`:''}
       </nav>`:''}
     </div>
   </div>
-  <div class="catbar"><div class="wrap"><a href="#/shop" class="${r==='#/shop'&&!cat?'on':''}">كل المنتجات</a>${S.cats.map(c=>`<a href="#/shop?c=${esc(c.id)}" class="${cat===c.id?'on':''}">${esc(c.name)}</a>`).join('')}</div></div></header>`;
+  <div class="catbar"><div class="wrap"><a href="#/" class="home-lnk" aria-label="الرئيسية">${IC.home}</a><a href="#/shop" class="${r==='#/shop'&&!cat?'on':''}">كل المنتجات</a>${S.cats.map(c=>`<a href="#/shop?c=${esc(c.id)}" class="${cat===c.id?'on':''}">${esc(c.name)}</a>`).join('')}</div></div></header>`;
 }
 function renderFooter(){
   const s=S.settings,link=(k,u)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">`:'';
@@ -629,9 +656,9 @@ function vHome(){
   const md=maxDisc(),deals=S.products.filter(p=>disc(p)>0).sort((a,b)=>disc(b)-disc(a)).slice(0,8),s=S.settings;
   const tiles=S.cats.map(c=>{const p=S.products.find(x=>x.cat===c.id);return `<a class="tile" href="#/shop?c=${esc(c.id)}">${p?`<img src="${imgOf(p)}" alt="" loading="lazy">`:''}<span>${esc(c.name)}</span></a>`}).join('');
   return `<section class="hero"><div class="wrap hero-in">
-    <div class="hero-txt"><h1>خلّي بيتك أجمل<br>بأسعار تناسبك</h1><p>كنب وستائر وسجاد وإضاءة وديكور لكل ركن في البيت${md?`، مع خصومات على أصناف مختارة`:''}.</p>
+    <div class="hero-txt"><h1>${(s.heroTitle||'خلّي بيتك أجمل\nبأسعار تناسبك').split('\n').map(x=>esc(x)).join('<br>')}</h1><p>${s.heroSubtitle?esc(s.heroSubtitle):`كنب وستائر وسجاد وإضاءة وديكور لكل ركن في البيت${md?'، مع خصومات على أصناف مختارة':''}.`}</p>
     <div class="cta"><a class="btn btn-brass" href="#/shop">تسوّق الآن</a><a class="btn btn-white" href="${esc(wa('مرحبًا، أريد الاستفسار عن منتجات '+s.name))}" target="_blank" rel="noopener noreferrer">${IC.wa} اسأل عبر واتساب</a></div></div>
-    <div class="archwrap">${md?`<div class="promo"><span>خصم حتى<b>${nf.format(md)}%</b></span></div>`:''}<div class="arch">${HERO_SCENE}</div></div>
+    <div class="archwrap">${md?`<div class="promo"><span>خصم حتى<b>${nf.format(md)}%</b></span></div>`:''}<div class="arch"><img src="${esc(s.heroImg||'images/hero-banner.jpg')}" alt="" loading="lazy"></div></div>
   </div></section>
   <div class="trust"><div class="wrap">
     <div>${IC.shield}<span><b>بياناتك محمية</b><span>حسابك وطلباتك في أمان</span></span></div>
@@ -649,7 +676,8 @@ function vShop(q){
   if(term)list=list.filter(p=>(p.name+' '+p.desc+' '+catName(p.cat)).toLowerCase().includes(term));
   if(sort==='asc')list.sort((a,b)=>a.price-b.price);else if(sort==='desc')list.sort((a,b)=>b.price-a.price);else if(sort==='disc')list=list.filter(p=>disc(p)>0).sort((a,b)=>disc(b)-disc(a));
   const url=(o)=>'#/shop?'+new URLSearchParams(Object.fromEntries(Object.entries({c,q:q.q,s:sort,...o}).filter(([,v])=>v))).toString();
-  return `<div class="wrap" style="padding:28px 0 8px"><h1 style="font-size:30px;color:var(--teal);margin-bottom:16px">${c?esc(catName(c)):(term?`نتائج البحث عن "${esc(q.q)}"`:'كل المنتجات')}</h1>
+  const title=c?catName(c):(term?`نتائج البحث عن "${q.q}"`:'كل المنتجات');
+  return pageBanner(S.settings.shopBg||'images/shop-header-bg.jpg',title)+`<div class="wrap" style="padding:20px 0 8px">
   <div class="filters"><a class="chip ${!c?'on':''}" href="${url({c:''})}">الكل</a>${S.cats.map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id})}">${esc(k.name)}</a>`).join('')}
   <label style="margin-inline-start:auto">الترتيب <select data-sort aria-label="الترتيب"><option value="">الأحدث</option><option value="asc" ${sort==='asc'?'selected':''}>الأقل سعرًا</option><option value="desc" ${sort==='desc'?'selected':''}>الأعلى سعرًا</option><option value="disc" ${sort==='disc'?'selected':''}>الأعلى خصمًا</option></select></label></div>
   ${list.length?`<div class="grid">${list.map(card).join('')}</div>`:`<div class="empty">${IC.search.replace('class="ico"','class="ico" style="width:48px;height:48px;margin:0 auto 12px;color:var(--brass)"')}<p>لا توجد منتجات مطابقة. جرّب قسمًا آخر أو كلمة بحث مختلفة.</p></div>`}</div>`;
@@ -671,9 +699,10 @@ function vProduct(id){
 }
 function vCart(){
   const L=cartLines();
-  if(!L.length)return `<div class="wrap empty">${IC.cart.replace('class="ico"','class="ico" style="width:48px;height:48px;margin:0 auto 12px;color:var(--brass)"')}<h2>سلتك فارغة</h2><p>أضف منتجات وستبقى محفوظة${S.user?' في حسابك':' هنا، وتُحفظ في حسابك بعد تسجيل الدخول'}.</p><a class="btn btn-teal" href="#/shop">ابدأ التسوق</a></div>`;
+  const cartBanner=pageBanner(S.settings.cartBg||'images/cart-bg.jpg','سلة التسوق');
+  if(!L.length)return cartBanner+`<div class="wrap empty">${IC.cart.replace('class="ico"','class="ico" style="width:48px;height:48px;margin:0 auto 12px;color:var(--brass)"')}<h2>سلتك فارغة</h2><p>أضف منتجات وستبقى محفوظة${S.user?' في حسابك':' هنا، وتُحفظ في حسابك بعد تسجيل الدخول'}.</p><a class="btn btn-teal" href="#/shop">ابدأ التسوق</a></div>`;
   const ship=+S.settings.shipping||0;
-  return `<div class="wrap"><h1 style="font-size:30px;color:var(--teal);padding-top:28px">سلة التسوق</h1><div class="two"><div class="panel">${L.map(({p,q})=>`<div class="line"><img src="${imgOf(p)}" alt=""><div><h3><a href="#/p/${esc(p.id)}">${esc(p.name)}</a></h3><div class="price"><b>${egp(p.price)}</b>${p.old>p.price?`<s>${egp(p.old)}</s>`:''}</div><button class="rm" data-act="rm" data-id="${esc(p.id)}">حذف</button></div><div class="end"><span class="qty"><button data-act="qty" data-id="${esc(p.id)}" data-d="-1" aria-label="أقل">−</button><span>${nf.format(q)}</span><button data-act="qty" data-id="${esc(p.id)}" data-d="1" aria-label="أكثر">+</button></span></div></div>`).join('')}
+  return cartBanner+`<div class="wrap"><div class="two"><div class="panel">${L.map(({p,q})=>`<div class="line"><img src="${imgOf(p)}" alt=""><div><h3><a href="#/p/${esc(p.id)}">${esc(p.name)}</a></h3><div class="price"><b>${egp(p.price)}</b>${p.old>p.price?`<s>${egp(p.old)}</s>`:''}</div><button class="rm" data-act="rm" data-id="${esc(p.id)}">حذف</button></div><div class="end"><span class="qty"><button data-act="qty" data-id="${esc(p.id)}" data-d="-1" aria-label="أقل">−</button><span>${nf.format(q)}</span><button data-act="qty" data-id="${esc(p.id)}" data-d="1" aria-label="أكثر">+</button></span></div></div>`).join('')}
   <p style="font-size:14px;color:var(--mute);margin:10px 0 0">${S.user?'سلتك محفوظة في حسابك، ويمكنك إكمال الطلب لاحقًا.':'سجّل الدخول لتُحفظ سلتك في حسابك وتطلبها في وقت لاحق.'}</p></div>
   <aside class="panel"><h2 style="font-size:22px;margin-bottom:10px">ملخص الطلب</h2><div class="sum"><span>المنتجات (${nf.format(cartCount())})</span><span>${egp(cartTotal())}</span></div>${ship?`<div class="sum"><span>الشحن</span><span>${egp(ship)}</span></div>`:'<div class="sum"><span>الشحن</span><span>يُحدد عند التأكيد</span></div>'}<div class="sum t"><span>الإجمالي</span><span>${egp(cartTotal()+ship)}</span></div><a class="btn btn-brass btn-block" style="margin-top:14px" href="#/checkout">متابعة الشراء</a></aside></div></div>`;
 }
@@ -713,9 +742,10 @@ function vDone(id){
   <p style="margin-top:14px"><a class="btn btn-line" href="#/account">تتبّع طلبي</a></p></div></div>`;
 }
 function vAccount(){
-  if(!S.user)return `<div class="wrap empty"><h2>سجّل الدخول لعرض حسابك</h2><p>هناك ستجد طلباتك وحالتها وسلتك المحفوظة.</p><button class="btn btn-teal" data-act="login">تسجيل الدخول</button></div>`;
+  const acctBanner=pageBanner(S.settings.cartBg||'images/cart-bg.jpg','حسابي وتتبع الطلبات');
+  if(!S.user)return acctBanner+`<div class="wrap empty"><h2>سجّل الدخول لعرض حسابك</h2><p>هناك ستجد طلباتك وحالتها وسلتك المحفوظة.</p><button class="btn btn-teal" data-act="login">تسجيل الدخول</button></div>`;
   const mine=S.orders.filter(o=>o.uid===S.user.id);
-  return `<div class="wrap" style="max-width:820px;padding:28px 0"><div class="panel" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px"><div><h1 style="font-size:26px;color:var(--teal)">أهلًا ${esc(S.user.name)}</h1><span style="color:var(--mute)" dir="ltr">${esc(S.user.type==='phone'?'0'+S.user.ident.slice(2):S.user.ident)}</span></div><button class="btn btn-line" data-act="logout">تسجيل الخروج</button></div>
+  return acctBanner+`<div class="wrap" style="max-width:820px;padding:28px 0"><div class="panel" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px"><div><h1 style="font-size:26px;color:var(--teal)">أهلًا ${esc(S.user.name)}</h1><span style="color:var(--mute)" dir="ltr">${esc(S.user.type==='phone'?'0'+S.user.ident.slice(2):S.user.ident)}</span></div><button class="btn btn-line" data-act="logout">تسجيل الخروج</button></div>
   <div class="shield">${IC.shield}<span>بياناتك محمية. كلمة المرور تُخزّن مشفّرة ولا يمكن لأحد الاطلاع عليها.</span></div>
   <div class="sh"><h2 style="font-size:24px;color:var(--teal)">طلباتي</h2><a href="#/cart">سلتي (${nf.format(cartCount())})</a></div>
   ${mine.length?mine.map(o=>orderCard(o,false)).join(''):`<div class="empty"><p>لا توجد طلبات بعد.</p><a class="btn btn-teal" href="#/shop">تسوّق الآن</a></div>`}</div>`;
@@ -750,6 +780,13 @@ function vAdmin(q){
     <div class="row2"><label class="f"><span>رقم واتساب (بصيغة دولية بدون +)</span><input type="tel" name="phone" value="${esc(s.phone)}" dir="ltr" style="text-align:right" required></label><label class="f"><span>البريد الإلكتروني</span><input type="email" name="email" value="${esc(s.email)}" dir="ltr" style="text-align:right" required></label></div>
     <div class="row2"><label class="f"><span>رابط صفحة فيسبوك</span><input type="text" name="fb" value="${esc(s.fb)}" dir="ltr" placeholder="https://facebook.com/..." style="text-align:right"></label><label class="f"><span>رابط حساب إنستجرام</span><input type="text" name="ig" value="${esc(s.ig)}" dir="ltr" placeholder="https://instagram.com/..." style="text-align:right"></label></div>
     <label class="f"><span>رسوم الشحن (ج.م) <small>اتركها 0 ليظهر "يُحدد عند التأكيد"</small></span><input type="number" name="shipping" min="0" step="1" value="${+s.shipping||0}"></label>
+    <h3 style="font-size:17px;color:var(--teal);margin:22px 0 4px">الصور والواجهة</h3>
+    <p style="color:var(--mute);font-size:14px;margin:0 0 10px">ضع اسم الملف داخل مجلد images الذي تضيفه بنفسك بجانب index.html، مثل images/hero-banner.jpg، أو رابط https:// كامل.</p>
+    <div class="row2"><label class="f"><span>صورة واجهة الرئيسية</span><input type="text" name="heroImg" value="${esc(s.heroImg||'')}" placeholder="images/hero-banner.jpg" dir="ltr" style="text-align:right"></label><label class="f"><span>خلفية الموقع العامة</span><input type="text" name="siteBg" value="${esc(s.siteBg||'')}" placeholder="images/hero-background.jpg" dir="ltr" style="text-align:right"></label></div>
+    <div class="row2"><label class="f"><span>خلفية رأس صفحة المنتجات</span><input type="text" name="shopBg" value="${esc(s.shopBg||'')}" placeholder="images/shop-header-bg.jpg" dir="ltr" style="text-align:right"></label><label class="f"><span>خلفية السلة وتتبع الطلبات</span><input type="text" name="cartBg" value="${esc(s.cartBg||'')}" placeholder="images/cart-bg.jpg" dir="ltr" style="text-align:right"></label></div>
+    <div class="row2"><label class="f"><span>عنوان الواجهة <small>(اختياري، اضغط Enter لسطر ثانٍ)</small></span><textarea name="heroTitle" maxlength="80" style="min-height:70px">${esc(s.heroTitle||'')}</textarea></label><label class="f"><span>وصف الواجهة <small>(اختياري)</small></span><textarea name="heroSubtitle" maxlength="200" style="min-height:70px">${esc(s.heroSubtitle||'')}</textarea></label></div>
+    <div class="row2"><label class="f"><span>شعار جهة التصميم <small>(اختياري)</small></span><input type="text" name="designLogo" value="${esc(s.designLogo||'')}" placeholder="images/logo.png" dir="ltr" style="text-align:right"></label><label class="f"><span>نص جهة التصميم</span><input type="text" name="designCredit" value="${esc(s.designCredit||'')}" placeholder="تصميم وادي المدينة" maxlength="60"></label></div>
+    <div class="row2"><label class="f"><span>اللون الأساسي</span><input type="color" name="colorPrimary" value="${esc(s.colorPrimary||'#0E4A47')}" style="width:80px;padding:2px"></label><label class="f"><span>لون التمييز</span><input type="color" name="colorAccent" value="${esc(s.colorAccent||'#C79A4B')}" style="width:80px;padding:2px"></label></div>
     <p class="err" role="alert"></p><button class="btn btn-teal" type="submit">حفظ التغييرات</button></form>`;
   }else if(t==='pages'){
     body=`<form class="panel" data-form="pages"><h2 style="font-size:22px;margin-bottom:6px">الصفحات القانونية</h2><p style="color:var(--mute);margin-top:0">السطر الذي يبدأ بـ "# " يصبح عنوانًا. اترك سطرًا فارغًا بين الفقرات. راجع النصوص مع مختص قانوني قبل الإطلاق.</p>
@@ -803,6 +840,7 @@ function authModal(tab='login',msg){
 /* ===== الأحداث ===== */
 const ACT={
   menu(){S.menu=!S.menu;renderHeader()},
+  theme(){const next=curTheme()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);store.set('wd_theme',next);renderHeader()},
   login(){S.menu=false;renderHeader();authModal('login')},
   signup(){S.menu=false;renderHeader();authModal('signup')},
   forgot(){authModal('forgot')},
@@ -896,7 +934,9 @@ const FORM={
     if(!/^20\d{10}$/.test(ph))return showErr(f,'رقم الواتساب بصيغة دولية مثل 201021776980');
     const url=u=>{u=String(u||'').trim();return u===''||/^https:\/\//.test(u)?u:null};
     if(url(d.fb)===null||url(d.ig)===null)return showErr(f,'روابط التواصل يجب أن تبدأ بـ https://');
-    await putDoc('store',{name:String(d.name).trim(),tagline:String(d.tagline).trim(),address:String(d.address).trim(),phone:ph,email:String(d.email).trim(),fb:String(d.fb).trim(),ig:String(d.ig).trim(),shipping:Math.max(0,+d.shipping||0)});
+    const hexOk=c=>/^#[0-9a-fA-F]{6}$/.test(c||'');
+    if(!hexOk(d.colorPrimary)||!hexOk(d.colorAccent))return showErr(f,'اختر لونًا صحيحًا.');
+    await putDoc('store',{name:String(d.name).trim(),tagline:String(d.tagline).trim(),address:String(d.address).trim(),phone:ph,email:String(d.email).trim(),fb:String(d.fb).trim(),ig:String(d.ig).trim(),shipping:Math.max(0,+d.shipping||0),heroImg:String(d.heroImg||'').trim(),siteBg:String(d.siteBg||'').trim(),shopBg:String(d.shopBg||'').trim(),cartBg:String(d.cartBg||'').trim(),heroTitle:String(d.heroTitle||'').trim(),heroSubtitle:String(d.heroSubtitle||'').trim(),designLogo:String(d.designLogo||'').trim(),designCredit:String(d.designCredit||'').trim(),colorPrimary:d.colorPrimary,colorAccent:d.colorAccent});
     toast('تم حفظ بيانات المتجر');render();
   },
   async pages(f){const d=Object.fromEntries(new FormData(f)),o={...S.pages};Object.keys(PAGE_TITLES).forEach(k=>o[k]=String(d[k]||''));await putDoc('pages',o);toast('تم حفظ الصفحات');render()},
@@ -927,6 +967,7 @@ function fbMsg(e){
 /* ===== التوجيه والعرض ===== */
 function parse(){const h=location.hash.slice(1)||'/',[p,qs]=h.split('?');return{parts:p.split('/').filter(Boolean),q:Object.fromEntries(new URLSearchParams(qs||''))}}
 function render(){
+  applyBrand();
   const{parts,q}=parse(),k=parts[0]||'';let html;
   if(!S.ready)html='<div class="wrap empty">جارٍ التحميل…</div>';
   else if(k==='')html=vHome();else if(k==='shop')html=vShop(q);else if(k==='p')html=vProduct(parts[1]);
@@ -940,6 +981,7 @@ window.addEventListener('hashchange',()=>{S.menu=false;render();window.scrollTo(
 
 /* ===== الإقلاع ===== */
 (async function boot(){
+  applyTheme();
   loadLocal();
   if(CFG.firebase){
     try{await initFirebase()}catch(e){console.warn(e);FB=null;loadLocal();toast('تعذر الاتصال بقاعدة البيانات، يعمل المتجر في الوضع المحلي')}
