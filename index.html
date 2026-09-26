@@ -325,7 +325,7 @@ const imgOf=p=>safeImg(p.img)?p.img:artUri(p.type,p.color);
 /* ===== البيانات الافتراضية (أسعار أمثلة قابلة للتعديل من لوحة التحكم) ===== */
 const P=(id,cat,name,price,old,type,color,desc)=>({id,cat,name,price,old,type,color,desc,stock:10,img:''});
 const DEF={
-  settings:{name:'Mazhar-Ali',tagline:'ديكور ومفروشات لكل ركن في بيتك',address:'مصر – السويس – الأربعين – شارع الجيش',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,heroImg:'',heroTitle:'',heroSubtitle:'',siteBg:'',shopBg:'',cartBg:'',storeIcon:'',designLogo:'',designCredit:'',colorPrimary:'#0E4A47',colorAccent:'#C79A4B'},
+  settings:{name:'Mazhar-Ali',tagline:'ديكور ومفروشات لكل ركن في بيتك',address:'مصر – السويس – الأربعين – شارع الجيش',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,heroImg:'images/hero-banner.jpg',heroTitle:'',heroSubtitle:'',siteBg:'images/hero-background.jpg',shopBg:'images/shop-header-bg.jpg',cartBg:'images/cart-bg.jpg',storeIcon:'',designLogo:'',designCredit:'',colorPrimary:'#0E4A47',colorAccent:'#C79A4B'},
   cats:[['c1','كنب وركنات'],['c2','غرف النوم'],['c3','الستائر'],['c4','السجاد'],['c5','الإضاءة'],['c6','المفروشات ومفارش السرير'],['c7','ديكور الحائط والمرايا'],['c8','الطاولات ووحدات التلفزيون'],['c9','التحف والإكسسوارات']].map(([id,name],i)=>({id,name,ord:i})),
   products:[
     P('p1','c1','كنبة ثلاثية مقاعد – قطيفة',18500,22000,'sofa','#0E4A47','كنبة ثلاثية المقاعد بتصميم عصري وجلسة مريحة، مناسبة لغرف المعيشة والاستقبال.'),
