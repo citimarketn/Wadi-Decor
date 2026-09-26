@@ -45,6 +45,7 @@ header.top{background:var(--surface);border-bottom:1px solid var(--line);positio
 .bar{display:flex;align-items:center;gap:16px;padding:10px 0}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
 .brand svg{width:46px;height:46px}
+.brand-icon{width:46px;height:46px;object-fit:contain;flex:none}
 .brandname{font-size:20px;color:var(--teal);white-space:nowrap}
 .brandsub{display:block;font:500 12px 'Tajawal',sans-serif;color:var(--mute);margin-top:-2px}
 .search{flex:1;display:flex;max-width:520px;margin-inline:auto}
@@ -324,7 +325,7 @@ const imgOf=p=>safeImg(p.img)?p.img:artUri(p.type,p.color);
 /* ===== البيانات الافتراضية (أسعار أمثلة قابلة للتعديل من لوحة التحكم) ===== */
 const P=(id,cat,name,price,old,type,color,desc)=>({id,cat,name,price,old,type,color,desc,stock:10,img:''});
 const DEF={
-  settings:{name:'وادي الديكور والمفروشات',tagline:'ديكور ومفروشات لكل ركن في بيتك',address:'مصر – السويس – الأربعين – شارع الجيش',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,heroImg:'',heroTitle:'',heroSubtitle:'',siteBg:'',shopBg:'',cartBg:'',designLogo:'',designCredit:'',colorPrimary:'#0E4A47',colorAccent:'#C79A4B'},
+  settings:{name:'وادي الديكور والمفروشات',tagline:'ديكور ومفروشات لكل ركن في بيتك',address:'مصر – السويس – الأربعين – شارع الجيش',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,heroImg:'',heroTitle:'',heroSubtitle:'',siteBg:'',shopBg:'',cartBg:'',storeIcon:'',designLogo:'',designCredit:'',colorPrimary:'#0E4A47',colorAccent:'#C79A4B'},
   cats:[['c1','كنب وركنات'],['c2','غرف النوم'],['c3','الستائر'],['c4','السجاد'],['c5','الإضاءة'],['c6','المفروشات ومفارش السرير'],['c7','ديكور الحائط والمرايا'],['c8','الطاولات ووحدات التلفزيون'],['c9','التحف والإكسسوارات']].map(([id,name],i)=>({id,name,ord:i})),
   products:[
     P('p1','c1','كنبة ثلاثية مقاعد – قطيفة',18500,22000,'sofa','#0E4A47','كنبة ثلاثية المقاعد بتصميم عصري وجلسة مريحة، مناسبة لغرف المعيشة والاستقبال.'),
@@ -625,7 +626,7 @@ function renderHeader(){
   $('#hdr').innerHTML=`
   <div class="notice"><div class="wrap">${IC.shield}<span>بياناتك محمية – اتصال مشفر، ولا نشارك بياناتك مع أي طرف</span></div></div>
   <header class="top"><div class="wrap bar">
-    <a class="brand" href="#/" aria-label="${esc(s.name)} – الرئيسية">${LOGO}<span><span class="brandname">${esc(s.name)}</span><span class="credit"><img src="${esc(s.designLogo||'images/logo.png')}" alt="" onerror="this.style.display='none'">${esc(s.designCredit||'تصميم وادي المدينة')}</span></span></a>
+    <a class="brand" href="#/" aria-label="${esc(s.name)} – الرئيسية"><img class="brand-icon" src="${esc(s.storeIcon||'images/logo.png')}" alt="" onerror="this.outerHTML='${LOGO.replace(/'/g,"\\'")}'"><span><span class="brandname">${esc(s.name)}</span>${(s.designLogo||s.designCredit)?`<span class="credit"><img src="${esc(s.designLogo||'')}" alt="" onerror="this.style.display='none'">${esc(s.designCredit||'')}</span>`:''}</span></a>
     <form class="search" data-form="search" role="search"><input type="text" name="q" placeholder="ابحث عن كنب، ستائر، سجاد…" aria-label="بحث" autocomplete="off"><button type="submit" aria-label="بحث">${IC.search}</button></form>
     <div class="tools">
       <button class="tbtn" data-act="theme" aria-label="${curTheme()==='dark'?'تفعيل الوضع النهاري':'تفعيل الوضع الليلي'}">${curTheme()==='dark'?IC.sun:IC.moon}</button>
@@ -785,7 +786,8 @@ function vAdmin(q){
     <div class="row2"><label class="f"><span>صورة واجهة الرئيسية</span><input type="text" name="heroImg" value="${esc(s.heroImg||'')}" placeholder="images/hero-banner.jpg" dir="ltr" style="text-align:right"></label><label class="f"><span>خلفية الموقع العامة</span><input type="text" name="siteBg" value="${esc(s.siteBg||'')}" placeholder="images/hero-background.jpg" dir="ltr" style="text-align:right"></label></div>
     <div class="row2"><label class="f"><span>خلفية رأس صفحة المنتجات</span><input type="text" name="shopBg" value="${esc(s.shopBg||'')}" placeholder="images/shop-header-bg.jpg" dir="ltr" style="text-align:right"></label><label class="f"><span>خلفية السلة وتتبع الطلبات</span><input type="text" name="cartBg" value="${esc(s.cartBg||'')}" placeholder="images/cart-bg.jpg" dir="ltr" style="text-align:right"></label></div>
     <div class="row2"><label class="f"><span>عنوان الواجهة <small>(اختياري، اضغط Enter لسطر ثانٍ)</small></span><textarea name="heroTitle" maxlength="80" style="min-height:70px">${esc(s.heroTitle||'')}</textarea></label><label class="f"><span>وصف الواجهة <small>(اختياري)</small></span><textarea name="heroSubtitle" maxlength="200" style="min-height:70px">${esc(s.heroSubtitle||'')}</textarea></label></div>
-    <div class="row2"><label class="f"><span>شعار جهة التصميم <small>(اختياري)</small></span><input type="text" name="designLogo" value="${esc(s.designLogo||'')}" placeholder="images/logo.png" dir="ltr" style="text-align:right"></label><label class="f"><span>نص جهة التصميم</span><input type="text" name="designCredit" value="${esc(s.designCredit||'')}" placeholder="تصميم وادي المدينة" maxlength="60"></label></div>
+    <label class="f"><span>أيقونة المتجر الرئيسية <small>(بجانب اسم المتجر)</small></span><input type="text" name="storeIcon" value="${esc(s.storeIcon||'')}" placeholder="images/logo.png" dir="ltr" style="text-align:right"></label>
+    <div class="row2"><label class="f"><span>شعار جهة التصميم <small>(اختياري، يظهر باهتًا أسفل الاسم)</small></span><input type="text" name="designLogo" value="${esc(s.designLogo||'')}" placeholder="images/design-credit.png" dir="ltr" style="text-align:right"></label><label class="f"><span>نص جهة التصميم <small>(اتركه فارغًا لإخفاء السطر)</small></span><input type="text" name="designCredit" value="${esc(s.designCredit||'')}" placeholder="مثال: تصميم Mazhar_Ali" maxlength="60"></label></div>
     <div class="row2"><label class="f"><span>اللون الأساسي</span><input type="color" name="colorPrimary" value="${esc(s.colorPrimary||'#0E4A47')}" style="width:80px;padding:2px"></label><label class="f"><span>لون التمييز</span><input type="color" name="colorAccent" value="${esc(s.colorAccent||'#C79A4B')}" style="width:80px;padding:2px"></label></div>
     <p class="err" role="alert"></p><button class="btn btn-teal" type="submit">حفظ التغييرات</button></form>`;
   }else if(t==='pages'){
@@ -936,7 +938,7 @@ const FORM={
     if(url(d.fb)===null||url(d.ig)===null)return showErr(f,'روابط التواصل يجب أن تبدأ بـ https://');
     const hexOk=c=>/^#[0-9a-fA-F]{6}$/.test(c||'');
     if(!hexOk(d.colorPrimary)||!hexOk(d.colorAccent))return showErr(f,'اختر لونًا صحيحًا.');
-    await putDoc('store',{name:String(d.name).trim(),tagline:String(d.tagline).trim(),address:String(d.address).trim(),phone:ph,email:String(d.email).trim(),fb:String(d.fb).trim(),ig:String(d.ig).trim(),shipping:Math.max(0,+d.shipping||0),heroImg:String(d.heroImg||'').trim(),siteBg:String(d.siteBg||'').trim(),shopBg:String(d.shopBg||'').trim(),cartBg:String(d.cartBg||'').trim(),heroTitle:String(d.heroTitle||'').trim(),heroSubtitle:String(d.heroSubtitle||'').trim(),designLogo:String(d.designLogo||'').trim(),designCredit:String(d.designCredit||'').trim(),colorPrimary:d.colorPrimary,colorAccent:d.colorAccent});
+    await putDoc('store',{name:String(d.name).trim(),tagline:String(d.tagline).trim(),address:String(d.address).trim(),phone:ph,email:String(d.email).trim(),fb:String(d.fb).trim(),ig:String(d.ig).trim(),shipping:Math.max(0,+d.shipping||0),heroImg:String(d.heroImg||'').trim(),siteBg:String(d.siteBg||'').trim(),shopBg:String(d.shopBg||'').trim(),cartBg:String(d.cartBg||'').trim(),heroTitle:String(d.heroTitle||'').trim(),heroSubtitle:String(d.heroSubtitle||'').trim(),storeIcon:String(d.storeIcon||'').trim(),designLogo:String(d.designLogo||'').trim(),designCredit:String(d.designCredit||'').trim(),colorPrimary:d.colorPrimary,colorAccent:d.colorAccent});
     toast('تم حفظ بيانات المتجر');render();
   },
   async pages(f){const d=Object.fromEntries(new FormData(f)),o={...S.pages};Object.keys(PAGE_TITLES).forEach(k=>o[k]=String(d[k]||''));await putDoc('pages',o);toast('تم حفظ الصفحات');render()},
